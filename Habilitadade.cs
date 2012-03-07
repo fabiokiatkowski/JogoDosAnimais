@@ -15,7 +15,6 @@ namespace Jogo_dos_Animais
 
         public Habilitadade(Animal animalAquatico, Animal animalTerrestre, string caracteristica)
         {
-            // TODO: Complete member initialization
             this._animalAquatico = animalAquatico;
             this._animalTerrestre = animalTerrestre;
             this._caracteristica = caracteristica;
