@@ -9,22 +9,22 @@ namespace Jogo_dos_Animais
     public class Animal : Acao
     {
         private const string _PERGUNTA = "O animal que você pensou foi ";
-        private Aprende _aprendeAquatico;
-        private string _nomeAnimal;
+        private Acao afirmaVitoria;
+        private Acao aprende;
 
-        public Animal(Aprende aprendeAquatico, string nomeAnimal)
+        public Animal(AfirmaVitoria afirmaVitoria, Aprende aprende, string descricao, GUI.IInteracaoComUsuario interacaoComUsuario)
+            : base (descricao, interacaoComUsuario)
         {
-            // TODO: Complete member initialization
-            this._aprendeAquatico = aprendeAquatico;
-            this._nomeAnimal = nomeAnimal;
+            this.afirmaVitoria = afirmaVitoria;
+            this.aprende = aprende;
         }
 
-        public override void Executar()
+        public override Acao Executar(Acao habilidade)
         {
-            if (IsPerguntaValida(MostraPergunta(_PERGUNTA, this._nomeAnimal)))
-                MessageBox.Show("Ganhei denovo.");
+            if (MostraPergunta(_PERGUNTA, this.Descricao))
+                return this.afirmaVitoria.Executar(this);
             else
-                _aprendeAquatico.Executar();
+                return this.aprende.Executar(this);
         }
     }
 }

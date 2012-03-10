@@ -9,23 +9,24 @@ namespace Jogo_dos_Animais
     public class Habilitadade : Acao
     {
         private const string _PERGUNTA = "O animal que você pensou ";
-        private Animal _animalAquatico;
-        private Animal _animalTerrestre;
-        private string _caracteristica;
+        private Acao _respostaSim;
+        private Acao _respostaNao;
 
-        public Habilitadade(Animal animalAquatico, Animal animalTerrestre, string caracteristica)
+        public Habilitadade(Acao respostaSim, Acao respostaNao, string caracteristica, GUI.IInteracaoComUsuario interacaoComUsuario) 
+            : base(caracteristica, interacaoComUsuario)
         {
-            this._animalAquatico = animalAquatico;
-            this._animalTerrestre = animalTerrestre;
-            this._caracteristica = caracteristica;
+            this._respostaSim = respostaSim;
+            this._respostaNao = respostaNao;
         }
 
-        public override void Executar()
+        public override Acao Executar(Acao animal)
         {
-            if (IsPerguntaValida(MostraPergunta(_PERGUNTA, this._caracteristica)))
-                this._animalAquatico.Executar();
+            if (MostraPergunta(_PERGUNTA, this.Descricao))
+                this._respostaSim = this._respostaSim.Executar(null);
             else
-                this._animalTerrestre.Executar();
+                this._respostaNao = this._respostaNao.Executar(null);
+
+            return this;
         }
     }
 }
