@@ -71,18 +71,26 @@ namespace Jogo_Dos_Animais_Testes
         [TestMethod()]
         public void EstadoDoJogo()
         {
+            //Instancia classe para apresentação das mensagens em tela
             IInteracaoComUsuario interacaoComUsuario = new InteracaoPorWindowsForm();
 
+            //Classe aprende, responsavel por fazer a criação da nova habilidade e do animal
             Aprende aprende = new Aprende(interacaoComUsuario);
+
+            //preserva o animal da resposta sim em todos os laços
             AfirmaVitoria afirmaVitoria = new AfirmaVitoria(interacaoComUsuario);
 
+            //Cria animal para primeira execução do jogo
             Animal animalAquatico = new Animal(afirmaVitoria, aprende, "Baleia", interacaoComUsuario);
             Animal animalTerrestre = new Animal(afirmaVitoria, aprende, "Macaco", interacaoComUsuario);
 
+            //Cria habilidade para primeira execução do jogo
             Habilitadade habilidade = new Habilitadade(animalAquatico, animalTerrestre, "vive na água", interacaoComUsuario);
 
+            //Valida se habilidade criada não é nula
             Assert.IsNotNull(habilidade);
 
+            //Executa o jogo dos animais até que o usuário queira sair
             do
             {
                 habilidade.Executar(habilidade);

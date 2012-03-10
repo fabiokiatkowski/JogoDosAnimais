@@ -21,6 +21,11 @@ namespace Jogo_dos_Animais
 
         public override Acao Executar(Acao animal)
         {
+            //Mostra a pergunta com a habilidade para tentar advinhar o animal
+            //em caso qualquer das resposta, é aqui que acontece a mágia do jogo
+            //ao atribuir o retorno o método Executar para _respostaSim e _respostaNao
+            //o código substitui o nó de animal por um nó de habilidade, fazendo com
+            //que o nó de animal se torne a resposta não do animal pensado.
             if (MostraPergunta(_PERGUNTA, this.Descricao))
                 this._respostaSim = this._respostaSim.Executar(null);
             else
