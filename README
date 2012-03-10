@@ -11,3 +11,8 @@ Utilizem com consciência para fazer o nosso mundo de bits um pouco melhor.
 
 Fábio Kiatkowski
 Engenheiro de Software
+
+#################################################################################
+                                     COMO UTILIZAR
+#################################################################################
+Crie um projeto de teste no Visual Studio e execute a classe TestJogo.cs
